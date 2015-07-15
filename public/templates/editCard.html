@@ -1,0 +1,27 @@
+<!-- <pre>{{ currentCard | json }}</pre> -->
+
+<form name="cardForm" ng-submit="editCard()">
+  <h3>Question</h3>
+  <p>
+    <input type="text" ng-model="currentCard.question" required>
+  </p>
+  <h3>Category</h3>
+  <p>
+    <select ng-model="currentCard.category" required>
+      <option ng-selected="{{currentCard.category===category}}" ng-repeat="category in categories">{{ category }}</option>
+    </select>
+  </p>
+  <h3>Answers</h3>
+  <p ng-repeat="answer in currentCard.answers">
+    <input
+    type="radio"
+    name="correctAnswer"
+    ng-model="answer.correct"
+    ng-change="setCorrect(answer)"
+    ng-value="true">
+    <input
+    type="text"
+    ng-model="answer.text" required>
+  </p>
+  <input type="submit">
+</form>

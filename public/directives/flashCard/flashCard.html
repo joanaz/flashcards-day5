@@ -1,0 +1,26 @@
+<div 
+  class="flash-card" 
+  ng-controller="FlashCardCtrl"
+  border-on-hover>
+
+    <a ui-sref="manageCard.edit({id: theCard._id})">Edit</a> | <a ui-sref="manageCard.delete({id: theCard._id})">Delete</a>
+
+    <h1>
+    <a ui-sref="manageCard({id: theCard._id})">
+      {{ theCard.question}}
+    </a>
+    </h1>
+
+    <h2
+      ng-show="answered"
+      class="answer-feedback"
+      ng-class="{ correct: answeredCorrectly, incorrect: !answeredCorrectly }">{{ feedback }}</h2>
+
+    <ul class="flash-card-answers">
+        <li class="flash-card-answer"
+            ng-click="answerQuestion(answer)"
+            ng-repeat="answer in theCard.answers">
+            {{ answer.text }}
+        </li>
+    </ul>
+</div>
